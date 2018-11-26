@@ -25,34 +25,14 @@ double GaussLegendre5(const std::function<double(double)> &f, double a, double b
 }
 
 double CompositeSimpson(const std::function<double(double)> &f, const std::vector<double> &x) {
-//    int n = x.size();
-//    double result = 0;
-//    double a = x[0];
-//    double b = x[n - 1];
-//
-//    double h = (b - a) / (2 * n);
-//
-//    double sum1 = 0;
-//    double sum2 = 0;
-//
-//    for (int i = 0; i < n; ++i) {
-//        sum1 += f(a + 2 * h * i);
-//        sum2 += f(a + 2 * h * (2 * i - 1));
-//    }
-//
-//
-//    result = (h / 3) * (f(a) + f(b) + sum1 + sum2);
-//
-//    return result;
+
 
 
     long n = x.size();
     double result = 0;
     double a = x[0];
     double b = x[n - 1];
-//
-//    double h = (b - a) / (2 * n);
-//
+
     double sum1 = (1.0 / 6.0) * (x[1] - x[0]) * f(a);
     double sum2 = (1.0 / 6.0) * (x[n - 1] - x[n - 2]) * f(b);
 
@@ -64,6 +44,7 @@ double CompositeSimpson(const std::function<double(double)> &f, const std::vecto
     for (int i = 1; i < n - 1; ++i) {
         sum3 += (1.0 / 6.0) * (x[i + 1] - x[i - 1]) * f(x[i]);
     }
+
     for (int i = 1; i < n; ++i) {
         sum4 += (2.0 / 3.0) * (x[i] - x[i - 1]) * f((1.0 / 2.0) * (x[i] + x[i - 1]));
     }
